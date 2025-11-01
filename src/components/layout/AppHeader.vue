@@ -43,14 +43,22 @@
               <Grid class="h-4 w-4 inline mr-2" />
               Kategoriyalar
             </router-link>
-            <a href="#" class="relative px-4 py-2 rounded-xl font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-300 group">
+            <router-link 
+              to="/employees" 
+              class="relative px-4 py-2 rounded-xl font-semibold transition-all duration-300 group"
+              :class="$route.name === 'employees' ? 'bg-gradient-to-r from-primary-500 to-purple-500 text-white shadow-colored' : 'text-gray-700 hover:bg-primary-50 hover:text-primary-600'"
+            >
               <Users class="h-4 w-4 inline mr-2" />
-              Mutaxassislar
-            </a>
-            <a href="#" class="relative px-4 py-2 rounded-xl font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-300 group">
+              Xodimlar
+            </router-link>
+            <router-link 
+              to="/jobs" 
+              class="relative px-4 py-2 rounded-xl font-semibold transition-all duration-300 group"
+              :class="$route.name === 'jobs' ? 'bg-gradient-to-r from-primary-500 to-purple-500 text-white shadow-colored' : 'text-gray-700 hover:bg-primary-50 hover:text-primary-600'"
+            >
               <Briefcase class="h-4 w-4 inline mr-2" />
-              Loyihalar
-            </a>
+              Ish o'rinlari
+            </router-link>
           </div>
         </nav>
 
@@ -64,11 +72,17 @@
           
           <!-- User Menu -->
           <div class="flex items-center bg-white/80 backdrop-blur-sm rounded-2xl p-1 shadow-medium border border-gray-200/50">
-            <button class="px-4 py-2 text-gray-700 hover:text-primary-600 font-semibold transition-colors duration-300 rounded-xl hover:bg-primary-50">
+            <button 
+              @click="openAuthModal('login')"
+              class="px-4 py-2 text-gray-700 hover:text-primary-600 font-semibold transition-colors duration-300 rounded-xl hover:bg-primary-50"
+            >
               <User class="h-4 w-4 inline mr-2" />
               Kirish
             </button>
-            <button class="btn-primary text-sm py-2 px-4 ml-2">
+            <button 
+              @click="openAuthModal('register')"
+              class="btn-primary text-sm py-2 px-4 ml-2"
+            >
               <UserPlus class="h-4 w-4 inline mr-2" />
               Ro'yxatdan o'tish
             </button>
@@ -147,15 +161,23 @@
         <span class="text-xs font-medium">Kategoriya</span>
       </router-link>
       
-      <a href="#" class="flex flex-col items-center justify-center space-y-1 text-gray-600 hover:text-primary-600 hover:bg-gray-50 transition-all duration-300">
+      <router-link 
+        to="/employees" 
+        class="flex flex-col items-center justify-center space-y-1 transition-all duration-300"
+        :class="$route.name === 'employees' ? 'text-primary-600 bg-primary-50' : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'"
+      >
         <Users class="h-5 w-5" />
-        <span class="text-xs font-medium">Mutaxassis</span>
-      </a>
+        <span class="text-xs font-medium">Xodimlar</span>
+      </router-link>
       
-      <a href="#" class="flex flex-col items-center justify-center space-y-1 text-gray-600 hover:text-primary-600 hover:bg-gray-50 transition-all duration-300">
+      <router-link 
+        to="/jobs" 
+        class="flex flex-col items-center justify-center space-y-1 transition-all duration-300"
+        :class="$route.name === 'jobs' ? 'text-primary-600 bg-primary-50' : 'text-gray-600 hover:text-primary-600 hover:bg-gray-50'"
+      >
         <Briefcase class="h-5 w-5" />
-        <span class="text-xs font-medium">Loyiha</span>
-      </a>
+        <span class="text-xs font-medium">Ish</span>
+      </router-link>
       
       <a href="#" class="flex flex-col items-center justify-center space-y-1 text-gray-600 hover:text-primary-600 hover:bg-gray-50 transition-all duration-300">
         <User class="h-5 w-5" />
@@ -163,11 +185,21 @@
       </a>
     </div>
   </nav>
+
+  <!-- Auth Modal -->
+  <AuthModal 
+    :isOpen="authModalOpen" 
+    :initialMode="authMode"
+    @close="closeAuthModal"
+    @login="handleLogin"
+    @register="handleRegister"
+  />
 </template>
 
 <script>
 import { ref } from 'vue'
 import { Search, Menu, X, Home, Grid, Users, Briefcase, Bell, User, UserPlus } from 'lucide-vue-next'
+import AuthModal from '../auth/AuthModal.vue'
 
 export default {
   name: 'AppHeader',
@@ -181,12 +213,15 @@ export default {
     Briefcase,
     Bell,
     User,
-    UserPlus
+    UserPlus,
+    AuthModal
   },
   setup() {
     const searchQuery = ref('')
     const mobileMenuOpen = ref(false)
     const showMobileSearch = ref(false)
+    const authModalOpen = ref(false)
+    const authMode = ref('login')
 
     const handleSearch = () => {
       if (searchQuery.value.trim()) {
@@ -196,11 +231,40 @@ export default {
       }
     }
 
+    const openAuthModal = (mode) => {
+      authMode.value = mode
+      authModalOpen.value = true
+    }
+
+    const closeAuthModal = () => {
+      authModalOpen.value = false
+    }
+
+    const handleLogin = (credentials) => {
+      console.log('Login:', credentials)
+      // Implement login logic
+      // For now, just close modal
+      closeAuthModal()
+    }
+
+    const handleRegister = (userData) => {
+      console.log('Register:', userData)
+      // Implement registration logic
+      // For now, just close modal
+      closeAuthModal()
+    }
+
     return {
       searchQuery,
       mobileMenuOpen,
       showMobileSearch,
-      handleSearch
+      authModalOpen,
+      authMode,
+      handleSearch,
+      openAuthModal,
+      closeAuthModal,
+      handleLogin,
+      handleRegister
     }
   }
 }
