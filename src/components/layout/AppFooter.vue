@@ -30,7 +30,7 @@
           </p>
 
           <!-- Stats -->
-          <div class="grid grid-cols-3 gap-6 mb-8">
+          <!-- <div class="grid grid-cols-3 gap-6 mb-8">
             <div class="text-center">
               <div class="text-2xl font-bold text-gradient mb-1">1000+</div>
               <div class="text-xs text-gray-400">Mutaxassislar</div>
@@ -43,7 +43,7 @@
               <div class="text-2xl font-bold text-gradient mb-1">98%</div>
               <div class="text-xs text-gray-400">Mamnunlik</div>
             </div>
-          </div>
+          </div> -->
 
           <!-- Social Media -->
           <div class="flex space-x-4">
@@ -110,22 +110,6 @@
               </a></li>
             </ul>
           </div>
-
-          <!-- Newsletter -->
-          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20">
-            <h4 class="font-semibold mb-2 text-gradient">📧 Yangiliklar</h4>
-            <p class="text-sm text-gray-300 mb-3">Eng so'nggi yangiliklar va takliflardan xabardor bo'ling</p>
-            <div class="flex space-x-2">
-              <input 
-                type="email" 
-                placeholder="Email manzilingiz"
-                class="flex-1 px-3 py-2 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm"
-              />
-              <button class="px-4 py-2 bg-gradient-to-r from-primary-500 to-purple-500 rounded-xl hover:from-primary-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105">
-                <Send class="h-4 w-4" />
-              </button>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -136,43 +120,7 @@
             <p class="text-gray-400 text-sm">
               © 2024 ServiceHub. Barcha huquqlar himoyalangan.
             </p>
-            <div class="flex items-center space-x-4 text-sm">
-              <a href="#" class="text-gray-400 hover:text-white transition-colors">Maxfiylik siyosati</a>
-              <span class="text-gray-600">•</span>
-              <a href="#" class="text-gray-400 hover:text-white transition-colors">Foydalanish shartlari</a>
-              <span class="text-gray-600">•</span>
-              <a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
-            </div>
           </div>
-          
-          <div class="flex items-center space-x-6">
-            <!-- Language Selector -->
-            <div class="flex items-center space-x-2">
-              <Globe class="h-4 w-4 text-gray-400" />
-              <select class="bg-white/10 backdrop-blur-sm text-white text-sm rounded-xl px-3 py-2 border border-white/20 focus:outline-none focus:ring-2 focus:ring-primary-500">
-                <option value="uz">🇺🇿 O'zbek</option>
-                <option value="ru">🇷🇺 Русский</option>
-                <option value="en">🇺🇸 English</option>
-              </select>
-            </div>
-
-            <!-- Back to Top -->
-            <button 
-              @click="scrollToTop"
-              class="group p-3 bg-white/10 backdrop-blur-sm rounded-2xl hover:bg-white/20 transition-all duration-300 transform hover:scale-110"
-            >
-              <ArrowUp class="h-5 w-5 text-gray-300 group-hover:text-white transition-colors" />
-            </button>
-          </div>
-        </div>
-
-        <!-- Made with love -->
-        <div class="text-center mt-8 pt-6 border-t border-white/10">
-          <p class="text-gray-500 text-sm flex items-center justify-center space-x-2">
-            <span>Made with</span>
-            <Heart class="h-4 w-4 text-red-500 animate-pulse" />
-            <span>in Uzbekistan</span>
-          </p>
         </div>
       </div>
     </div>

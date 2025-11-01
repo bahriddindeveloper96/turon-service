@@ -18,7 +18,7 @@
               <div class="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full animate-pulse"></div>
             </div>
             <div class="flex flex-col">
-              <span class="text-2xl font-bold text-gradient group-hover:scale-105 transition-transform duration-300">ServiceHub</span>
+              <span class="text-2xl font-bold text-gradient group-hover:scale-105 transition-transform duration-300">Service</span>
               <span class="text-xs text-gray-500 font-medium">Professional Services</span>
             </div>
           </router-link>
